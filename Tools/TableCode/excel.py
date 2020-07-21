@@ -8,7 +8,7 @@ from TableCode.go_data import GenGolangTableData
 from TableCode.go_file import GenGoTableManagerFile, genGolangLoadTablesFile
 from const import excel_dir
 
-def processExcel(filePath, fileName):
+def processExcel(filePath, fileName, isOutClient = True, isOutServer = True):
     if "." in fileName:
         fileName = fileName.split('.')
         fileName = fileName[0]
@@ -32,19 +32,19 @@ def processExcel(filePath, fileName):
         if CS_row == "S" or CS_row == "CS":
             golang_fields_index.append(index)
 
-    if len(cs_fields_index) > 0:
+    if isOutClient and len(cs_fields_index) > 0:
         cs_files.append(fileName)
         GenCSTableManagerFile(fileName, cs_fields_index, table)
         GenCSTableData(fileName, cs_fields_index, table)
 
-    if len(golang_fields_index) > 0:
+    if isOutServer and len(golang_fields_index) > 0:
         go_files.append(fileName)
         GenGoTableManagerFile(fileName, golang_fields_index, table)
         GenGolangTableData(fileName, golang_fields_index, table)
 
 cs_files = []
 go_files = []
-def excel_start():
+def excel_start(isOutClient = True, isOutServer = True):
     excels = []
     for dir in os.listdir(excel_dir):  # 遍历当前目录所有文件和目录
         fileName = dir
@@ -55,13 +55,13 @@ def excel_start():
                     continue
                 if os.path.splitext(file)[1] == '.xlsx':  # 分割文件名和文件扩展名，并且扩展名为'proto'
                     fileName = file
-                    processExcel(child, fileName)
+                    processExcel(child, fileName, isOutClient, isOutServer)
                     excels.append(fileName)
         elif os.path.isfile(child):  # 如果是文件，则直接判断扩展名
             if "~" in child:
                 continue
             if os.path.splitext(child)[1] == '.xlsx':
-                processExcel(child, fileName)
+                processExcel(child, fileName, isOutClient, isOutServer)
                 excels.append(fileName)
 
     genCSLoadTablesFile(cs_files)
