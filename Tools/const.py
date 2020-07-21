@@ -6,8 +6,10 @@
 proto_path = "Proto/src"
 # proto 输出 c# 代码的保存位置
 csfile_path = "../Client/Assets/Scripts/Net/ProtoDic.cs"
+cs_msg_path = "../Client/Assets/Scripts/Net/proto"
 # proto 输出 golang 代码的保存位置
 gofile_path = "../Server/src/server/msg/msg.go"
+go_msg_path = "../Server/src/server/msg"
 
 #########################################################
 ### table 数据表
