@@ -32,3 +32,6 @@ pip install xlrd // 读取excel用
         GenTableData.bat，生成两端配表和初始化统一接口。
         或者执行命令：python3 gen_table_data.py
 
+5. 客户端使用
+    建议将工程内的内容输出为 unitypackage 再导入目标工程 或者直接使用。
+
