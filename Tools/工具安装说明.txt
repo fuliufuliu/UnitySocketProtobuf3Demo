@@ -26,6 +26,7 @@ pip install xlrd // 读取excel用
 
 4.使用。
 GenProto.bat，生成两端消息文件和对应的id管理类
+或者执行命令：python3 gen_proto.py
 GenTableData.bat，生成两端配表和初始化统一接口。
-
+或者执行命令：python3 gen_table_data.py
 
