@@ -9,13 +9,13 @@ public class TestTable
     public string Name;
     public int HP;
     public string AP_Name;
-    public  TestTable(string line)
+    public TestTable(string line)
     {
         string[] fileds = line.Split('	');
-        ID =int.Parse(fileds[0]);
-        Name =fileds[1];
-        HP =int.Parse(fileds[2]);
-        AP_Name =fileds[3];
+        ID = int.Parse(fileds[0]);
+        Name = fileds[1];
+        HP = int.Parse(fileds[2]);
+        AP_Name = fileds[3];
      }
 }
 
@@ -37,7 +37,7 @@ public class TestTableManager
             {
                 TestTable rowData = new TestTable(line);
                 data.Add(rowData.ID, rowData);
-}
+            }
             else
             {
                 continue;
@@ -51,6 +51,15 @@ public class TestTableManager
         TestTable rowData = null;
         data.TryGetValue(id, out rowData);
         return rowData;
+    }
+
+    public TestTable GetDataByName(string name)
+    {
+        foreach(KeyValuePair<int, TestTable> kp in data)
+        {
+            if (kp.Value.Name == name) return kp.Value;
+        }
+        return null;
     }
 
     private TestTableManager() { }
