@@ -24,9 +24,11 @@ pip install xlrd // 读取excel用
   go get -u -v github.com/golang/protobuf/protoc-gen-go
 
 
-4.使用。
-GenProto.bat，生成两端消息文件和对应的id管理类
-或者执行命令：python3 gen_proto.py
-GenTableData.bat，生成两端配表和初始化统一接口。
-或者执行命令：python3 gen_table_data.py
+4.使用
+    a. 配置路径：打开 const.py 文件修改对应的路径
+    b. 执行：
+        GenProto.bat，生成两端消息文件和对应的id管理类
+        或者执行命令：python3 gen_proto.py
+        GenTableData.bat，生成两端配表和初始化统一接口。
+        或者执行命令：python3 gen_table_data.py
 
